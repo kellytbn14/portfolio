@@ -317,6 +317,25 @@ body {
 .proj-title-card { font-size:1.15rem; font-weight:600; margin-bottom:.55rem; }
 .proj-desc-card { font-size:.83rem; color:var(--text2); line-height:1.8; }
 
+.proj-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.proj-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* clave */
+  opacity: 0.25;
+  transition: transform .4s, opacity .4s;
+}
+
+.proj-card:hover .proj-image img {
+  transform: scale(1.08);
+  opacity: 0.4;
+}
+
 /* ── EXPERIENCE ──────────────────────────── */
 .timeline { position:relative; padding-left:1.5rem; margin-top:2.5rem; }
 .timeline::before { content:''; position:absolute; left:0; top:8px; bottom:0; width:1px; background:linear-gradient(to bottom, var(--p500), transparent); }
@@ -772,46 +791,106 @@ const DATA = {
     {
       cat: "Frontend", icon: "bi-window",
       techs: [
-        { name:"Angular",       icon:'<i class="devicon-angular-plain colored"></i>',      level:88 },
+        { name:"Angular",       icon:'<i class="devicon-angularjs-plain colored"></i>',      level:100 },
         { name:"React",         icon:'<i class="devicon-react-original colored"></i>',     level:80 },
-        { name:"TypeScript",    icon:'<i class="devicon-typescript-plain colored"></i>',   level:85 },
-        { name:"HTML / CSS",    icon:'<i class="devicon-html5-plain colored"></i>',        level:92 },
+        { name:"TypeScript",    icon:'<i class="devicon-typescript-plain colored"></i>',   level:100 },
+        { name:"HTML / CSS",    icon:'<i class="devicon-html5-plain colored"></i>',        level:100 },
+        { name:"PrimeFaces",    icon:'<i class="devicon-java-plain colored"></i>',         level:100 },
+        { name:"JavaFX",        icon:'<i class="devicon-java-plain colored"></i>',         level:100 },
       ]
     },
     {
       cat: "Backend", icon: "bi-server",
       techs: [
-        { name:"Java",          icon:'<i class="devicon-java-plain colored"></i>',         level:90 },
-        { name:"Spring Boot",   icon:'<i class="devicon-spring-plain colored"></i>',       level:87 },
-        { name:"Node.js",       icon:'<i class="devicon-nodejs-plain colored"></i>',       level:78 },
-        { name:"Python",        icon:'<i class="devicon-python-plain colored"></i>',       level:70 },
+        { name:"Java",          icon:'<i class="devicon-java-plain colored"></i>',         level:100 },
+        { name:"Spring Boot",   icon:'<i class="devicon-spring-plain colored"></i>',       level:100 },
+        { name:"Spring Security", icon:'<i class="devicon-spring-plain colored"></i>',       level:100 },
+        { name:"C#",              icon:'<i class="devicon-csharp-plain colored"></i>',       level:100 },
+        { name:".NET Core",       icon:'<i class="devicon-dotnetcore-plain colored"></i>',   level:100 },
+        { name:".NET Framework",  icon:'<i class="devicon-dotnetcore-plain colored"></i>',   level:100 },
+        { name:"Node.js",       icon:'<i class="devicon-nodejs-plain colored"></i>',       level:100 },
+        { name:"NestJS",        icon:'<i class="devicon-nodejs-plain colored"></i>',       level:100 },
+      ]
+    },
+    {
+      cat: "Arquitectura & Integración", icon: "bi-diagram-3",
+      techs: [
+        { name:"REST APIs",     icon:'<i class="devicon-fastapi-plain colored"></i>',      level:100 },
+        { name:"Microservicios",icon:'<i class="devicon-docker-plain colored"></i>',       level:100 },
+        { name:"RabbitMQ", icon:'<img src="https://www.vectorlogo.zone/logos/rabbitmq/rabbitmq-icon.svg" width="20"/>', level:100 },
+        { name:"OAuth2 / OIDC", icon:'<i class="devicon-auth0-plain colored"></i>',        level:100 },
+        { name:"JWT",           icon:'<i class="devicon-json-plain colored"></i>',         level:100 },
+        { name:"Keycloak",      icon:'<i class="devicon-keycloak-plain colored"></i>',     level:100 },
+      ]
+    },
+     {
+    cat: "Azure", icon: "bi-cloud",
+      techs: [
+        { name:"Azure Functions",     icon:'', level:100 },
+        { name:"API Management",      icon:'', level:100 },
+        { name:"Azure DevOps",        icon:'', level:100 },
+        { name:"Service Bus",         icon:'', level:100 },
+        { name:"Blob Storage",        icon:'', level:100 },
+        { name:"Application Insights",icon:'', level:100 },
+        { name:"Azure Pipelines",icon:'',       level:100 },
+      ]
+    },
+    {
+      cat: "AWS", icon: "bi-cloud",
+      techs: [
+        { name:"EC2",        icon:'', level:50 },
+        { name:"S3",         icon:'', level:70 },
+        { name:"Lambda",     icon:'', level:68 },
+        { name:"RDS",        icon:'', level:68 },
       ]
     },
     {
       cat: "Bases de datos", icon: "bi-database",
       techs: [
-        { name:"MongoDB",       icon:'<i class="devicon-mongodb-plain colored"></i>',      level:82 },
-        { name:"PostgreSQL",    icon:'<i class="devicon-postgresql-plain colored"></i>',   level:80 },
-        { name:"MySQL",         icon:'<i class="devicon-mysql-plain colored"></i>',        level:75 },
-        { name:"Redis",         icon:'<i class="devicon-redis-plain colored"></i>',        level:65 },
+        { name:"PostgreSQL",    icon:'<i class="devicon-postgresql-plain colored"></i>',   level:100 },
+        { name:"SQL Server",    icon:'<i class="devicon-microsoftsqlserver-plain colored"></i>', level:100 },
+        { name:"MySQL",         icon:'<i class="devicon-mysql-plain colored"></i>',        level:100 },
+        { name:"Oracle",        icon:'<i class="devicon-oracle-original colored"></i>',    level:100 },
+        { name:"MongoDB",       icon:'<i class="devicon-mongodb-plain colored"></i>',      level:100 },
       ]
     },
     {
-      cat: "DevOps & Cloud", icon: "bi-cloud",
-      techs: [
-        { name:"Docker",        icon:'<i class="devicon-docker-plain colored"></i>',       level:78 },
-        { name:"Git",           icon:'<i class="devicon-git-plain colored"></i>',          level:90 },
-        { name:"AWS",           icon:'<i class="devicon-amazonwebservices-original colored"></i>', level:68 },
-        { name:"Linux",         icon:'<i class="devicon-linux-plain colored"></i>',        level:72 },
+      cat: "DevOps", icon: "bi-cloud",
+      techs: [       
+        { name:"Docker",        icon:'<i class="devicon-docker-plain colored"></i>',       level:80 },
+        { name:"Nginx",         icon:'<i class="devicon-nginx-original colored"></i>',     level:80 },
+        { name:"Jenkins",       icon:'<i class="devicon-jenkins-line colored"></i>',       level:80 },
+        { name:"GitHub Actions",icon:'<i class="devicon-github-original"></i>',    level:80 },        
       ]
     },
+    {
+      cat: "Low-Code & Automatización", icon: "bi-lightning",
+      techs: [
+        { name:"Azure Logic Apps", icon:'<i class="devicon-microsoft-plain colored"></i>',    level:100 },
+        { name:"Power Apps",       icon:'<i class="devicon-microsoft-plain colored"></i>', level:100 },
+        { name:"Power Automate",   icon:'<i class="devicon-microsoft-plain colored"></i>', level:100 },
+      ]
+    },
+    {
+      cat: "Otros", icon: "bi-pc-display",
+      techs: [      
+        { name:"Git",               icon:'<i class="devicon-git-plain colored"></i>',          level:100 },
+        { name:"GitHub",    icon:'<i class="bi bi-github"></i>', level:100 },
+        { name:"Bitbucket", icon:'<i class="bi bi-bitbucket"></i>', level:100 },
+        { name:"GitLab",    icon:'<i class="bi bi-gitlab"></i>', level:100 },
+        { name:"JUnit / Mockito",   icon:'',  level:100 },
+        { name:"xUnit",             icon:'', level:100 },
+        { name:"SonarQube",         icon:'', level:100 },
+      ]
+    }
   ],
 
   projects: [
     {
-      title:"E-Commerce Platform", emoji:"🛒",
-      tags:["Angular","Spring Boot","PostgreSQL","AWS"],
-      desc:"Plataforma de comercio electrónico con carrito en tiempo real, pagos con Stripe, panel de administración y despliegue en AWS."
+      title:"Plataformas empresariales",
+      image:"images/projects01.png",
+      tags:["Angular",".Net","NodeJs","Sql Server","Azure Functions", "Power Automate", "Blob Storage"],
+      desc:"Desarrollo de múltiples soluciones empresariales incluyendo plataformas web, aplicaciones móviles y arquitecturas serverless. Incluye sistemas para gestión de becas, voluntariados y digitalización de procesos internos como legalización de gastos."
     },
     {
       title:"Microservices API", emoji:"⚙️",
@@ -932,10 +1011,8 @@ DATA.projects.forEach((p,pi)=>{
   d.innerHTML=`
     <div class="proj-thumb">
       <div class="proj-grad"></div>
-      <div class="proj-emoji">${p.emoji}</div>
-      <div class="proj-hover">
-        <a href="#" class="a-demo">Demo</a>
-        <a href="#" class="a-code"><i class="bi bi-github"></i> Código</a>
+      <div class="proj-image">
+        <img src="${p.image}" alt="${p.title}" />
       </div>
     </div>
     <div class="proj-body">
