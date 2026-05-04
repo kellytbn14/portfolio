@@ -833,6 +833,7 @@ const DATA = {
         { name:"Blob Storage",        icon:'', level:100 },
         { name:"Application Insights",icon:'', level:100 },
         { name:"Azure Pipelines",icon:'',       level:100 },
+        { name:"Azure Artifacts",icon:'',       level:100 },
       ]
     },
     {
@@ -887,62 +888,91 @@ const DATA = {
 
   projects: [
     {
-      title:"Plataformas empresariales",
+      title:"Desarrollo de plataformas corporativas",
       image:"images/projects01.png",
-      tags:["Angular",".Net Core","NodeJs","Sql Server","Azure Functions", "Power Automate", "Blob Storage"],
-      desc:"Desarrollo de múltiples soluciones empresariales incluyendo plataformas web, aplicaciones móviles y arquitecturas serverless. Incluye sistemas para gestión de becas, voluntariados y digitalización de procesos internos como legalización de gastos."
+      tags:["Angular",".Net Core","NodeJs","Sql Server","Azure Functions", "Azure Logic Apps", "Power Automate", "Blob Storage"],
+      desc:"Participación en el desarrollo y evolución de múltiples soluciones empresariales orientadas a optimizar procesos internos, incluyendo plataformas web y flujos automatizados en la nube. <br> <br> La solución abarcó el desarrollo de APIs REST con .NET y Node.js, junto con interfaces web en Angula. <br> <br> Se integraron servicios serverless en Azure, como Functions, Logic Apps y Power Automate."
     },
     {
-      title:"Plataforma de cotización logística", 
+      title:"Plataforma de cotización de servicios de shipping", 
       image:"images/projects02.png",
-      tags:["Angular",".Net Core","NodeJs","Azure API Management","Azure Logic Apps"],
-      desc:"Sistema centralizado para la gestión y comparación de proveedores logísticos, permitiendo generar cotizaciones de transporte de forma rápida y eficiente."
+      tags:["Angular",".Net Core","Azure API Management","Azure Logic Apps"],
+      desc:"Desarrollo de una solución orientada a centralizar y optimizar el proceso de cotización de servicios logísticos, integrando múltiples proveedores en una única plataforma para facilitar la comparación y selección de opciones de transporte. <br> <br> La arquitectura se construyó sobre APIs REST en .NET Core, complementadas con un frontend en Angular para la visualización y gestión de cotizaciones. Se incorporaron capacidades de integración y orquestación mediante Azure Logic Apps, permitiendo automatizar flujos entre distintos servicios externos, mientras que Azure API Management se utilizó para exponer y gobernar los servicios de forma controlada. <br> <br> El resultado es una plataforma más eficiente y escalable, que reduce significativamente los tiempos de generación de cotizaciones y mejora la toma de decisiones al consolidar múltiples fuentes de información en un solo sistema."
     },
     {
       title:"Plataforma de gestión y monitoreo de energías renovables", 
       image:"images/projects02.png",
       tags:["React","Node.js","Socket.io","PostgreSQL"],
-      desc:"Diseño y desarrollo end-to-end de una solución para la gestión y monitoreo de recursos energéticos, orientada a optimizar la operación y facilitar la toma de decisiones en un entorno enfocado en sostenibilidad. La plataforma fue construida desde cero, definiendo la arquitectura backend con APIs REST en Spring Boot y desarrollando una interfaz frontend en Angular orientada a la visualización eficiente de información. Se integraron mecanismos de seguridad mediante Keycloak, garantizando autenticación y autorización seguras para el acceso a la plataforma. El resultado es una solución escalable y extensible, preparada para la incorporación de nuevos módulos y capaz de soportar la evolución del negocio en un contexto internacional."
+      desc:"Diseño y desarrollo end-to-end de una solución para la gestión y monitoreo de recursos energéticos, orientada a optimizar la operación y facilitar la toma de decisiones. <br> <br> La plataforma fue construida desde cero, definiendo la arquitectura backend con APIs REST en Spring Boot y desarrollando una interfaz frontend en Angular. Se integraron mecanismos de seguridad mediante Keycloak, garantizando autenticación y autorización para el acceso a la plataforma. <br> <br> El resultado es una solución escalable y extensible, preparada para la incorporación de nuevos módulos y capaz de soportar la evolución del negocio."
     },
     {
-      title:"Analytics Dashboard", 
+      title:"Plataforma de e-commerce integrada con funcionalidades sociales", 
       image:"images/projects02.png",
-      tags:["Angular","Python","FastAPI","Redis"],
-      desc:"Dashboard analítico con visualizaciones interactivas, caché Redis y exportación de reportes a PDF y Excel."
+      tags:["Angular","Springboot","Java","Keycloak","Azure Functions"],
+      desc:"Desarrollo de una solución que combina la gestión de ventas en línea con capacidades de interacción social, orientada a mejorar la experiencia del usuario y fortalecer la relación con los clientes dentro de la plataforma. <br> <br> La arquitectura se basó en APIs REST construidas con Spring Boot, junto con un frontend en Angular.  <br> <br> La solución integró plataformas externas como Vtex y RD Station, permitiendo conectar procesos de venta, marketing y comunicación en un mismo ecosistema.  <br> <br> Se incorporaron capacidades cloud mediante Azure Functions para procesos desacoplados, así como mecanismos de seguridad con Keycloak y estrategias de pruebas unitarias que contribuyeron a la estabilidad y rendimiento del sistema"
+    },
+    {
+      title:"Sistema POS y plataforma integral de gestión (inventarios, pedidos y CRM)", 
+      image:"images/projects02.png",
+      tags:["Angular","Springboot","Java","Keycloak","JavaFX","RabbitMQ","SQL / NoSQL"],
+      desc:"Desarrollo de una solución empresarial que centraliza la operación de ventas, inventarios y gestión de clientes, integrando múltiples componentes en una arquitectura distribuida orientada a rendimiento y escalabilidad. <br> <br> La plataforma combina un backend basado en APIs REST con Spring Boot, un frontend web en Angular y una aplicación de escritorio en JavaFX, cubriendo distintos contextos de uso dentro del negocio. <br> <br> La comunicación entre componentes se soporta mediante mensajería asíncrona con RabbitMQ, permitiendo desacoplar procesos y mejorar la eficiencia operativa.<br> <br> Se implementaron mecanismos de seguridad con Keycloak y se gestionaron tanto bases de datos relacionales como NoSQL, optimizando el acceso y la consistencia de la información. La solución fue diseñada con un enfoque en calidad, incorporando pruebas unitarias y mejoras continuas en la experiencia de usuario."
+    },
+    {
+      title:"Sistema de microservicios para gestión de preavisados y reservas", 
+      image:"images/projects02.png",
+      tags:[".NET Core","Arquitectura Hexagonal","Azure Blob Storage","Application Insights"],
+      desc:"Diseño y desarrollo de una arquitectura backend basada en microservicios, orientada a la gestión eficiente de preavisos y reservas dentro de un entorno empresarial con alta necesidad de escalabilidad y mantenibilidad. <br> <br> La solución fue construida bajo principios de arquitectura hexagonal. Se integraron servicios de almacenamiento en la nube mediante Azure Blob Storage y herramientas de monitoreo como Application Insight. <br> <br> El enfoque en calidad se reforzó mediante la implementación de pruebas unitarias.<br> <br> El resultado es una plataforma modular y escalable que mejora la confiabilidad de las operaciones y optimiza la gestión de información en tiempo real."
+    },
+    {
+      title:"Plataforma de gestión y visualización de datos maestros", 
+      image:"images/projects02.png",
+      tags:[".NET Core","Angular","Azure Pipelines","Azure Artifacts"],
+      desc:"Desarrollo de un portal orientado a centralizar y gestionar el Golden Record, permitiendo la consolidación y visualización de datos críticos del negocio para mejorar la precisión y consistencia de la información. <br> <br> La solución se construyó sobre un backend en .NET y un frontend en Angular. <br> <br> Se incorporaron prácticas de aseguramiento de calidad mediante pruebas unitarias, junto con la automatización de procesos de integración y despliegue continuo utilizando Azure Pipelines y gestión de dependencias con Azure Artifacts. <br> <br> El resultado es una plataforma que fortalece la calidad y confiabilidad de los datos, facilitando la toma de decisiones y asegurando la integridad de la información dentro de la organización."
+    },
+    {
+      title:"Plataforma de gestión de identidad y control de accesos", 
+      image:"images/projects02.png",
+      tags:["Java","Spring Boot","Spring Security","Keycloak","Angular","JavaFX"],
+      desc:"Liderazgo técnico y desarrollo de una solución integral de seguridad orientada a la autenticación y autorización de usuarios en aplicaciones críticas, fortaleciendo los mecanismos de control de acceso dentro de la organización. <br> <br> La plataforma se diseñó bajo un enfoque centralizado de identidad, implementando flujos de autenticación y autorización con Keycloak y Spring Security, integrados sobre un backend en Spring Boot. <br> <br> La solución abarcó múltiples canales, incluyendo aplicaciones web en Angular y aplicaciones de escritorio en JavaFX, garantizando consistencia en los mecanismos de seguridad a lo largo del ecosistema. <br> <br> Desde el rol de liderazgo técnico, se definieron lineamientos de arquitectura, estándares de calidad y prácticas de desarrollo, además de acompañar la adopción del sistema mediante capacitación a usuarios y equipos técnicos."
+    },
+    {
+      title:"Plataformas bancarias", 
+      image:"images/projects02.png",
+      tags:["Java","Spring Boot",".NET","Angular","OAuth2", "SQL"],
+      desc:"Desarrollo de soluciones de software orientadas al sector financiero, enfocadas en la construcción de APIs robustas y plataformas integrales que soportan operaciones críticas del negocio. <br> <br> Participé en la implementación de arquitecturas seguras, integrando mecanismos avanzados de autenticación y autorización (OAuth2, OIDC, JWT). <br> <br> Las soluciones combinan backend en Java y .NET con interfaces modernas en Angular y React. <br> <br> El trabajo en equipos ágiles y entornos bilingües permitió entregar productos alineados con estándares de calidad, escalabilidad y mantenibilidad requeridos en el sector financiero."
     },
   ],
 
   experience: [
     {
-      date:"2023 — Presente",
-      company:"Nombre de la empresa",
-      logoText:"EMP",
-      role:"Senior Full Stack Developer",
-      desc:"Desarrollo de plataformas web de alto tráfico. Liderazgo técnico de un equipo de 5 personas. Implementación de arquitectura de microservicios y mejora del 40% en tiempo de respuesta.",
-      tags:["Java","Angular","Spring Boot","AWS","Docker"]
+      date:"2024 — Presente",
+      company:"TCS",
+      logoText:"👜",
+      role:"Ingeniera Full Stack Developer",
+      desc:"Desarrollo integral de soluciones de software empresariales. Trabajo en equipos ágiles multidisciplinarios, integrando seguridad, escalabilidad y buenas prácticas de arquitectura para garantizar productos de alta calidad en un entorno bilingüe.",
+      tags:["Java","C#","Javascript"]
     },
     {
-      date:"2021 — 2023",
-      company:"Otra empresa",
-      logoText:"OTR",
+      date:"2024 — 2025",
+      company:"Scotiabank",
+      logoText:"👜",
       role:"Full Stack Developer",
-      desc:"Construcción de APIs REST y aplicaciones web con React y Node.js. Integración con pasarelas de pago y servicios de terceros. Trabajo en equipo Scrum.",
-      tags:["Node.js","React","MongoDB","Docker"]
+      desc:"Desarrollo integral de soluciones de software empresariales. Trabajo en equipos ágiles multidisciplinarios, integrando seguridad, escalabilidad y buenas prácticas de arquitectura para garantizar productos de alta calidad en un entorno bilingüe.",
+      tags:["Java","C#",".NetCore","SqlServer","Primefaces"]
     },
     {
-      date:"2020 — 2021",
-      company:"Startup / Freelance",
-      logoText:"FRL",
-      role:"Junior Developer",
-      desc:"Desarrollo de sitios web corporativos, landing pages e integración de APIs. Aprendizaje acelerado de metodologías ágiles y buenas prácticas de desarrollo.",
-      tags:["JavaScript","HTML/CSS","PHP","MySQL"]
+      date:"2020 — 2024",
+      company:"BPT",
+      logoText:"👜",
+      role:"Analista Full Stack Developer",
+      desc:"Desarrollo integral de aplicaciones a lo largo de todo el ciclo de vida del software utilizando metodologías ágiles, con comunicación directa con el cliente para la resolución de requerimientos. Participación en la demostración de soluciones a clientes y posibles clientes, abordando aspectos técnicos.",
+      tags:["Java","C#","Javascript","NodeJs","Angular",".NetCore","Azure","Sql","NoSql","MongoDb"]
     },
   ],
 
   education: [
-    { icon:"bi-mortarboard-fill", degree:"Ingeniería de Sistemas", school:"Universidad de tu ciudad", year:"2016 — 2021" },
-    { icon:"bi-patch-check-fill", degree:"AWS Certified Developer", school:"Amazon Web Services", year:"2023" },
-    { icon:"bi-code-slash",       degree:"Full Stack Bootcamp",     school:"Nombre del bootcamp",    year:"2020" },
+    { icon:"bi-mortarboard-fill", degree:"Ingeniería de Sistemas", school:"Universidad de Antioquia", year:"2017 — 2025" },
+    { icon:"bi-patch-check-fill", degree:"Técnica profesional en soporte de sistemas de información", school:"Politécnico Colombiano Jaime Isaza Cadavid", year:"2015 - 2017" },
   ],
 
   theory: [
@@ -1012,12 +1042,6 @@ DATA.projects.forEach((p,pi)=>{
   const d=document.createElement('div');
   d.className='proj-card reveal'; d.style.transitionDelay=pi*.1+'s';
   d.innerHTML=`
-    <div class="proj-thumb">
-      <div class="proj-grad"></div>
-      <div class="proj-image">
-        <img src="${p.image}" alt="${p.title}" />
-      </div>
-    </div>
     <div class="proj-body">
       <div class="proj-tags">${p.tags.map(t=>`<span class="tag-chip">${t}</span>`).join('')}</div>
       <h3 class="proj-title-card">${p.title}</h3>
