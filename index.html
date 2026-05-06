@@ -1110,6 +1110,17 @@ document.getElementById('burger').addEventListener('click',()=>{
 });
 document.querySelectorAll('.nav-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navMenu').classList.remove('open')));
 
+// ntfy.sh — notificación de visita
+fetch('https://ntfy.sh/cf1a8b9e-51a8-493d-9582-dea40e36077e', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    topic: 'cf1a8b9e-51a8-493d-9582-dea40e36077e',
+    title: '👀 Alguien visitó tu portfolio',
+    message: `🕐 ${new Date().toLocaleString('es-CO')}  |  🌍 ${navigator.language}  |  📱 ${/Mobi/.test(navigator.userAgent) ? 'Móvil' : 'Escritorio'}`
+  })
+});
+
 // Form
 document.getElementById('contactForm').addEventListener('submit',e=>{
   e.preventDefault();
