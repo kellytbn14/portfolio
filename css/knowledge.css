@@ -1,0 +1,117 @@
+.know-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
+  gap: 1.2rem;
+}
+@media(max-width:991px) { .know-bento { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width:575px) { .know-bento { grid-template-columns: 1fr; } }
+
+.know-kcard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+.know-kcard.featured { grid-column: span 2; }
+@media(max-width:575px) { .know-kcard.featured { grid-column: span 1; } }
+
+.know-kcard::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(107,92,255,.05) 0%, transparent 55%);
+  pointer-events: none;
+}
+.know-kcard::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--p500), var(--p300), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+}
+.know-kcard:hover { transform: translateY(-4px); border-color: var(--border2); box-shadow: 0 16px 40px rgba(107,92,255,.1); }
+.know-kcard:hover::after { transform: scaleX(1); }
+
+.know-deco {
+  position: absolute; bottom: -12px; right: -12px;
+  width: 90px; height: 90px;
+  background-image: radial-gradient(rgba(139,61,255,.22) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0; transition: opacity .3s; pointer-events: none;
+}
+.know-kcard:hover .know-deco { opacity: 1; }
+
+.know-khead {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: .85rem;
+}
+.know-kicon {
+  font-size: 1.55rem; color: var(--p400); line-height: 1;
+  display: inline-block;
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1), color .3s, filter .3s;
+}
+.know-kcard.featured .know-kicon { font-size: 1.9rem; }
+.know-kcard:hover .know-kicon {
+  transform: scale(1.45) rotate(-10deg);
+  color: var(--p200);
+  filter: drop-shadow(0 0 10px rgba(139,61,255,.7));
+}
+
+.know-cat {
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--p400); background: rgba(107,92,255,.1); border: 1px solid var(--border);
+  padding: .2rem .65rem;
+}
+
+.know-ktitle {
+  font-size: .93rem; font-weight: 600; color: var(--text); line-height: 1.3; margin-bottom: 1rem;
+}
+.know-kcard.featured .know-ktitle { font-size: 1.1rem; }
+
+.know-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: .9rem; }
+
+.know-tag {
+  font-family: var(--font-mono);
+  font-size: .71rem;
+  font-weight: 500;
+  letter-spacing: .4px;
+  padding: .38rem .9rem;
+  background: rgba(139,61,255,.1);
+  color: var(--p200);
+  border: 1px solid rgba(107,92,255,.28);
+  display: inline-block;
+  transition: background .22s, border-color .22s, color .22s, box-shadow .22s,
+              transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.know-kcard.featured .know-tag { font-size: .76rem; padding: .42rem 1rem; }
+
+.know-kcard:hover .know-tag {
+  background: rgba(139,61,255,.22);
+  border-color: var(--p400);
+  color: var(--p100);
+  box-shadow: 0 0 10px rgba(107,92,255,.2);
+  transform: scale(1.08) translateY(-2px);
+}
+.know-kcard:hover .know-tag:nth-child(1) { transition-delay:.03s }
+.know-kcard:hover .know-tag:nth-child(2) { transition-delay:.07s }
+.know-kcard:hover .know-tag:nth-child(3) { transition-delay:.11s }
+.know-kcard:hover .know-tag:nth-child(4) { transition-delay:.15s }
+.know-kcard:hover .know-tag:nth-child(5) { transition-delay:.19s }
+.know-kcard:hover .know-tag:nth-child(6) { transition-delay:.23s }
+.know-kcard:hover .know-tag:nth-child(7) { transition-delay:.27s }
+.know-kcard:hover .know-tag:nth-child(8) { transition-delay:.31s }
+
+.know-tag:hover {
+  transform: scale(1.18) translateY(-4px) !important;
+  background: rgba(139,61,255,.35) !important;
+  border-color: var(--p300) !important;
+  box-shadow: 0 0 18px rgba(107,92,255,.45), 0 4px 12px rgba(0,0,0,.3) !important;
+  color: #fff !important;
+  transition-delay: 0s !important;
+}
+
+.know-kdesc {
+  font-size: .75rem; color: var(--muted); line-height: 1.75;
+  padding-top: .75rem; border-top: 1px solid var(--border);
+  opacity: .6; transition: opacity .25s;
+}
+.know-kcard:hover .know-kdesc { opacity: 1; }

@@ -1,0 +1,2 @@
+#cur { position:fixed; width:9px; height:9px; background:var(--accent); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); transition:width .15s,height .15s; }
+#cur-r { position:fixed; width:38px; height:38px; border:1.5px solid rgba(139,61,255,.45); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); }

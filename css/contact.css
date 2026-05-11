@@ -1,0 +1,30 @@
+#contact { text-align:center; }
+
+.contact-big {
+  font-family:var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height:1.05; margin-bottom:1.4rem;
+}
+.contact-big .i { font-style:italic; }
+.contact-big .o { color:transparent; -webkit-text-stroke:1.5px var(--p400); }
+
+.contact-sub { font-size:.95rem; color:var(--text2); max-width:480px; margin:0 auto 2.8rem; line-height:1.9; }
+
+.contact-links { display:flex; justify-content:center; flex-wrap:wrap; gap:1rem; margin-bottom:3.5rem; }
+.clink {
+  font-family:var(--font-mono); font-size:.75rem; letter-spacing:1px; text-transform:uppercase;
+  color:var(--text2); text-decoration:none; display:flex; align-items:center; gap:.5rem;
+  padding:.75rem 1.4rem; border:1px solid var(--border);
+  transition:all .25s;
+}
+.clink:hover { color:var(--p300); border-color:var(--border2); background:var(--surface); }
+
+.contact-form { max-width:540px; margin:0 auto; text-align:left; }
+.cf-label { font-family:var(--font-mono); font-size:.68rem; letter-spacing:2px; text-transform:uppercase; color:var(--p400); display:block; margin-bottom:.4rem; }
+.cf-input {
+  width:100%; background:var(--surface); border:1px solid var(--border); color:var(--text);
+  font-family:var(--font-mono); font-size:.84rem; padding:.8rem 1rem; outline:none;
+  transition:border-color .25s; resize:vertical;
+}
+.cf-input:focus { border-color:var(--p500); }
+.cf-input::placeholder { color:var(--muted); }

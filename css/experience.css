@@ -1,0 +1,38 @@
+.timeline { position:relative; padding-left:1.5rem; margin-top:2.5rem; }
+.timeline::before { content:''; position:absolute; left:0; top:8px; bottom:0; width:1px; background:linear-gradient(to bottom, var(--p500), transparent); }
+
+.tl-item {
+  position:relative; padding-left:2.2rem; margin-bottom:3rem;
+  opacity:0; transform:translateX(-20px); transition:opacity .6s, transform .6s;
+}
+.tl-item.in { opacity:1; transform:none; }
+
+.tl-dot {
+  position:absolute; left:-2.35rem; top:.5rem;
+  width:10px; height:10px; background:var(--accent); border-radius:50%;
+  box-shadow:0 0 0 3px var(--bg2), 0 0 12px var(--glow);
+}
+
+.tl-header { display:flex; align-items:flex-start; gap:1.2rem; margin-bottom:.7rem; flex-wrap:wrap; }
+
+.tl-logo {
+  width:44px; height:44px; background:var(--surf2); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  font-size:1.4rem; font-weight:700; color:var(--p300);
+  font-family:var(--font-mono); font-size:.85rem; letter-spacing:-.5px;
+}
+
+.tl-info { flex:1; }
+.tl-date { font-family:var(--font-mono); font-size:.68rem; color:var(--p400); letter-spacing:1.5px; text-transform:uppercase; margin-bottom:.25rem; }
+.tl-company { font-size:1.15rem; font-weight:600; margin-bottom:.15rem; }
+.tl-role { font-family:var(--font-mono); font-size:.78rem; color:var(--text2); }
+
+.tl-desc {
+  font-size:.88rem; color:var(--muted); line-height:1.9;
+  border-left:2px solid var(--border2); padding-left:1rem;
+}
+.tl-tags { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.9rem; }
+.tl-tag {
+  font-family:var(--font-mono); font-size:.6rem; letter-spacing:.5px; text-transform:uppercase;
+  padding:.18rem .55rem; background:rgba(139,61,255,.12); color:var(--p300); border:1px solid var(--border);
+}

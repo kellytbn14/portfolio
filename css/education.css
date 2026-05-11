@@ -1,0 +1,12 @@
+.edu-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(270px, 1fr)); gap:1.4rem; }
+
+.edu-card {
+  background:var(--surface); border:1px solid var(--border); padding:2rem;
+  transition:transform .25s, border-color .25s; position:relative; overflow:hidden;
+}
+.edu-card::before { content:''; position:absolute; top:-30px; right:-30px; width:100px; height:100px; background:radial-gradient(circle, rgba(139,61,255,.08), transparent 70%); }
+.edu-card:hover { transform:translateY(-4px); border-color:var(--border2); }
+.edu-icon { font-size:2rem; color:var(--p400); margin-bottom:1.1rem; display:block; }
+.edu-degree { font-size:1.05rem; font-weight:600; margin-bottom:.35rem; }
+.edu-school { font-family:var(--font-mono); font-size:.74rem; color:var(--text2); margin-bottom:.35rem; }
+.edu-year { font-family:var(--font-mono); font-size:.68rem; color:var(--p400); letter-spacing:1px; }
