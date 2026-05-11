@@ -390,63 +390,111 @@ body {
 .edu-school { font-family:var(--font-mono); font-size:.74rem; color:var(--text2); margin-bottom:.35rem; }
 .edu-year { font-family:var(--font-mono); font-size:.68rem; color:var(--p400); letter-spacing:1px; }
 
-/* ── KNOWLEDGE ───────────────────────────── */
-.know-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; }
-@media(max-width:768px){ .know-grid { grid-template-columns:1fr; } }
+/* ── KNOWLEDGE BENTO ─────────────────────── */
+.know-bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: dense;
+  gap: 1.2rem;
+}
+@media(max-width:991px) { .know-bento { grid-template-columns: repeat(2, 1fr); } }
+@media(max-width:575px) { .know-bento { grid-template-columns: 1fr; } }
 
-.know-title-sub {
-  font-family:var(--font-mono); font-size:.7rem; letter-spacing:2px; text-transform:uppercase;
-  color:var(--p400); margin-bottom:1.5rem; padding-bottom:.6rem;
-  border-bottom:1px solid var(--border);
-  display:flex; align-items:center; gap:.5rem;
+.know-kcard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+.know-kcard.featured { grid-column: span 2; }
+@media(max-width:575px) { .know-kcard.featured { grid-column: span 1; } }
+
+.know-kcard::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(107,92,255,.05) 0%, transparent 55%);
+  pointer-events: none;
+}
+.know-kcard::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--p500), var(--p300), transparent);
+  transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+}
+.know-kcard:hover { transform: translateY(-4px); border-color: var(--border2); box-shadow: 0 16px 40px rgba(107,92,255,.1); }
+.know-kcard:hover::after { transform: scaleX(1); }
+
+.know-deco {
+  position: absolute; bottom: -12px; right: -12px;
+  width: 90px; height: 90px;
+  background-image: radial-gradient(rgba(139,61,255,.22) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity: 0; transition: opacity .3s;
+  pointer-events: none;
+}
+.know-kcard:hover .know-deco { opacity: 1; }
+
+/* header row: icon izquierda, categoría derecha */
+.know-khead {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: .85rem;
+}
+.know-kicon {
+  font-size: 1.55rem; color: var(--p400); line-height: 1;
+  transition: transform .3s, color .3s;
+}
+.know-kcard.featured .know-kicon { font-size: 1.9rem; }
+.know-kcard:hover .know-kicon { transform: scale(1.15) rotate(-5deg); color: var(--p300); }
+
+.know-cat {
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--p400); background: rgba(107,92,255,.1); border: 1px solid var(--border);
+  padding: .2rem .65rem;
 }
 
-/* practical skills */
-.diagrams-list { display:flex; flex-direction:column; gap:1.1rem; }
-
-.diag-item {
-  background:var(--surface); border:1px solid var(--border);
-  display:grid; grid-template-columns:72px 1fr; overflow:hidden;
-  transition:border-color .25s, transform .25s;
+.know-ktitle {
+  font-size: .93rem; font-weight: 600; color: var(--text); line-height: 1.3; margin-bottom: 1rem;
 }
-.diag-item:hover { border-color:var(--border2); transform:translateX(4px); }
+.know-kcard.featured .know-ktitle { font-size: 1.1rem; }
 
-.diag-thumb {
-  background:var(--surf2); display:flex; align-items:center; justify-content:center;
-  padding:.5rem; border-right:1px solid var(--border);
+/* ── TAGS: protagonistas ─────────────────── */
+.know-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: .9rem; }
+
+.know-tag {
+  font-family: var(--font-mono);
+  font-size: .71rem;
+  font-weight: 500;
+  letter-spacing: .4px;
+  padding: .38rem .9rem;
+  background: rgba(139,61,255,.1);
+  color: var(--p200);
+  border: 1px solid rgba(107,92,255,.28);
+  transition: background .2s, border-color .2s, color .2s, box-shadow .2s;
 }
-.diag-thumb svg { width:48px; height:48px; }
+.know-kcard.featured .know-tag { font-size: .76rem; padding: .42rem 1rem; }
 
-.diag-info { padding:.9rem 1rem; }
-.diag-title { font-size:.9rem; font-weight:600; margin-bottom:.2rem; }
-.diag-desc { font-family:var(--font-mono); font-size:.7rem; color:var(--muted); line-height:1.6; }
-
-/* theory cards */
-.theory-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-
-.theory-card {
-  background:var(--surface); border:1px solid var(--border);
-  padding:1.4rem;
-  transition:transform .25s, border-color .25s;
-  position:relative; overflow:hidden;
+/* brillo escalonado por tag */
+.know-kcard:hover .know-tag {
+  background: rgba(139,61,255,.22);
+  border-color: var(--p400);
+  color: var(--p100);
+  box-shadow: 0 0 10px rgba(107,92,255,.2);
 }
-.theory-card::after {
-  content:''; position:absolute; bottom:0; left:0; right:0; height:2px;
-  background:linear-gradient(90deg, var(--p600), var(--p400), transparent);
-  transform:scaleX(0); transform-origin:left; transition:transform .35s;
-}
-.theory-card:hover { transform:translateY(-3px); border-color:var(--border2); }
-.theory-card:hover::after { transform:scaleX(1); }
+.know-kcard:hover .know-tag:nth-child(1) { transition-delay:.02s }
+.know-kcard:hover .know-tag:nth-child(2) { transition-delay:.05s }
+.know-kcard:hover .know-tag:nth-child(3) { transition-delay:.08s }
+.know-kcard:hover .know-tag:nth-child(4) { transition-delay:.11s }
+.know-kcard:hover .know-tag:nth-child(5) { transition-delay:.14s }
+.know-kcard:hover .know-tag:nth-child(6) { transition-delay:.17s }
+.know-kcard:hover .know-tag:nth-child(7) { transition-delay:.20s }
 
-.theory-icon { font-size:1.5rem; color:var(--p400); margin-bottom:.7rem; display:block; }
-.theory-name { font-size:.92rem; font-weight:600; margin-bottom:.3rem; }
-.theory-desc { font-size:.78rem; color:var(--muted); line-height:1.7; }
-
-.theory-badges { display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.6rem; }
-.tbadge {
-  font-family:var(--font-mono); font-size:.58rem; letter-spacing:.5px;
-  padding:.18rem .5rem; background:rgba(139,61,255,.1); color:var(--p300); border:1px solid var(--border);
+/* descripción: secundaria, se refuerza en hover */
+.know-kdesc {
+  font-size: .75rem; color: var(--muted); line-height: 1.75;
+  padding-top: .75rem; border-top: 1px solid var(--border);
+  opacity: .6; transition: opacity .25s;
 }
+.know-kcard:hover .know-kdesc { opacity: 1; }
 
 /* ── CONTACT ─────────────────────────────── */
 #contact { text-align:center; }
@@ -653,84 +701,7 @@ footer {
     <p class="sec-eyebrow">06 — conocimientos</p>
     <h2 class="sec-title">Habilidades & <em>saberes</em></h2>
     <div class="sec-divider"></div>
-    <div class="know-grid">
-
-      <!-- 4.1 Prácticas -->
-      <div class="reveal-left">
-        <p class="know-title-sub"><i class="bi bi-diagram-3"></i> Habilidades prácticas</p>
-        <div class="diagrams-list">
-          <!-- Architecture -->
-          <div class="diag-item reveal" style="transition-delay:.05s">
-            <div class="diag-thumb">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="4" width="16" height="10" rx="1.5" stroke="#9f60ff" stroke-width="1.5"/>
-                <rect x="16" y="22" width="16" height="10" rx="1.5" stroke="#bc93ff" stroke-width="1.5"/>
-                <rect x="2" y="34" width="16" height="10" rx="1.5" stroke="#9f60ff" stroke-width="1.5"/>
-                <rect x="30" y="13" width="16" height="10" rx="1.5" stroke="#d8bfff" stroke-width="1.5"/>
-                <line x1="10" y1="14" x2="24" y2="22" stroke="#7c22f0" stroke-width="1" stroke-dasharray="3 2"/>
-                <line x1="10" y1="34" x2="24" y2="32" stroke="#7c22f0" stroke-width="1" stroke-dasharray="3 2"/>
-                <line x1="32" y1="27" x2="38" y2="27" stroke="#6b18d4" stroke-width="1" stroke-dasharray="3 2"/>
-                <line x1="38" y1="23" x2="24" y2="22" stroke="#6b18d4" stroke-width="1" stroke-dasharray="3 2"/>
-              </svg>
-            </div>
-            <div class="diag-info">
-              <p class="diag-title">Arquitecturas de software</p>
-              <p class="diag-desc">Diagramas C4, microservicios, monolitos, eventos</p>
-            </div>
-          </div>
-          <!-- Sequence -->
-          <div class="diag-item reveal" style="transition-delay:.1s">
-            <div class="diag-thumb">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <line x1="8" y1="4" x2="8" y2="44" stroke="#9f60ff" stroke-width="1.5" stroke-dasharray="3 2"/>
-                <line x1="24" y1="4" x2="24" y2="44" stroke="#bc93ff" stroke-width="1.5" stroke-dasharray="3 2"/>
-                <line x1="40" y1="4" x2="40" y2="44" stroke="#d8bfff" stroke-width="1.5" stroke-dasharray="3 2"/>
-                <rect x="4" y="2" width="8" height="5" rx="1" fill="#19142e" stroke="#9f60ff" stroke-width="1"/>
-                <rect x="20" y="2" width="8" height="5" rx="1" fill="#19142e" stroke="#bc93ff" stroke-width="1"/>
-                <rect x="36" y="2" width="8" height="5" rx="1" fill="#19142e" stroke="#d8bfff" stroke-width="1"/>
-                <line x1="8" y1="14" x2="24" y2="14" stroke="#9f60ff" stroke-width="1.2"/>
-                <polygon points="22,12 24,14 22,16" fill="#9f60ff"/>
-                <line x1="24" y1="22" x2="40" y2="22" stroke="#bc93ff" stroke-width="1.2"/>
-                <polygon points="38,20 40,22 38,24" fill="#bc93ff"/>
-                <line x1="40" y1="30" x2="24" y2="30" stroke="#d8bfff" stroke-width="1.2" stroke-dasharray="3 2"/>
-                <polygon points="26,28 24,30 26,32" fill="#d8bfff"/>
-              </svg>
-            </div>
-            <div class="diag-info">
-              <p class="diag-title">Diagramas de secuencia</p>
-              <p class="diag-desc">UML, flujos de mensajes, interacciones de sistema</p>
-            </div>
-          </div>
-          <!-- ER -->
-          <div class="diag-item reveal" style="transition-delay:.15s">
-            <div class="diag-thumb">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="2" y="8" width="18" height="14" rx="1.5" stroke="#9f60ff" stroke-width="1.5"/>
-                <line x1="2" y1="13" x2="20" y2="13" stroke="#9f60ff" stroke-width="1"/>
-                <rect x="28" y="8" width="18" height="14" rx="1.5" stroke="#bc93ff" stroke-width="1.5"/>
-                <line x1="28" y1="13" x2="46" y2="13" stroke="#bc93ff" stroke-width="1"/>
-                <rect x="14" y="30" width="18" height="14" rx="1.5" stroke="#d8bfff" stroke-width="1.5"/>
-                <line x1="14" y1="35" x2="32" y2="35" stroke="#d8bfff" stroke-width="1"/>
-                <line x1="20" y1="15" x2="28" y2="15" stroke="#7c22f0" stroke-width="1.2"/>
-                <line x1="11" y1="22" x2="20" y2="30" stroke="#7c22f0" stroke-width="1.2"/>
-                <line x1="37" y1="22" x2="30" y2="30" stroke="#7c22f0" stroke-width="1.2"/>
-              </svg>
-            </div>
-            <div class="diag-info">
-              <p class="diag-title">Diagramas entidad-relación</p>
-              <p class="diag-desc">Modelado de base de datos, relaciones, normalización</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 4.2 Teóricos -->
-      <div class="reveal">
-        <p class="know-title-sub"><i class="bi bi-book"></i> Conocimientos teóricos</p>
-        <div class="theory-grid" id="theoryGrid"></div>
-      </div>
-
-    </div>
+    <div class="know-bento" id="knowGrid"></div>
   </div>
 </section>
 
@@ -739,12 +710,11 @@ footer {
   <div style="max-width:1200px;margin:0 auto;">
     <p class="sec-eyebrow" style="justify-content:center">07 — contacto</p>
     <h2 class="contact-big"><span class="i">Trabajemos</span><br><span class="o">juntos</span></h2>
-    <p class="contact-sub">¿Tienes un proyecto en mente? Me encantaría escucharte. Siempre abierto a nuevas oportunidades y desafíos.</p>
+    <p class="contact-sub">Siempre disponible a escuchar nuevas oportunidades y desafíos.</p>
     <div class="contact-links">
       <a href="mailto:kellytbn14@gmail.com" class="clink"><i class="bi bi-envelope-fill"></i> kellytbn14@gmail.com</a>
       <a href="https://github.com/kellytbn14" target="_blank" class="clink"><i class="bi bi-github"></i> GitHub</a>
       <a href="https://www.linkedin.com/in/kellytbn/" target="_blank" class="clink"><i class="bi bi-linkedin"></i> LinkedIn</a>
-       <a href="https://wa.me/573207742404" target="_blank" class="clink"><i class="bi bi-whatsapp"></i> WhatsApp</a>
     </div>
   </div>
 </section>
@@ -952,30 +922,60 @@ const DATA = {
     { icon:"bi-patch-check-fill", degree:"Técnica profesional en soporte de sistemas de información", school:"Politécnico Colombiano Jaime Isaza Cadavid", year:"2015 - 2017" },
   ],
 
-  theory: [
+  knowledge: [
     {
-      icon:"bi-puzzle",
-      name:"Patrones de diseño",
-      desc:"GoF: creacionales, estructurales y de comportamiento. Aplicación contextual en proyectos reales.",
-      badges:["Singleton","Factory","Observer","Strategy","Decorator"]
+      icon:"bi-diagram-3", cat:"Arquitectura", featured:true,
+      title:"Arquitecturas de software",
+      tags:["C4 Model","Microservicios","Hexagonal","Monolito modular"]
     },
     {
-      icon:"bi-layers",
-      name:"Principios SOLID",
-      desc:"Diseño orientado a objetos con alta cohesión y bajo acoplamiento para sistemas mantenibles.",
-      badges:["SRP","OCP","LSP","ISP","DIP"]
+      icon:"bi-shuffle", cat:"Modelado", featured:false,
+      title:"Diagramas",
+      tags:["UML","Diagramas de secuencia","Diagramas de procesos", "Diagramas de estados"]
     },
     {
-      icon:"bi-file-earmark-code",
-      name:"Código limpio",
-      desc:"Naming, funciones cortas, comentarios útiles, DRY, KISS, YAGNI y refactoring continuo.",
-      badges:["DRY","KISS","YAGNI","Refactoring"]
+      icon:"bi-table", cat:"Modelado", featured:false,
+      title:"Modelado de datos",
+      tags:["ER Diagrams","Normalización","SQL","NoSQL"]
     },
     {
-      icon:"bi-shield-check",
-      name:"Buenas prácticas",
-      desc:"TDD, code review, documentación viva, versionado semántico y CI/CD como parte del proceso.",
-      badges:["TDD","CI/CD","Code Review","Semver"]
+      icon:"bi-grid-1x2", cat:"Soluciones", featured:true,
+      title:"Espectro técnico",
+      desc:"Capacidad para diseñar e implementar diferentes modalidades de software según las necesidades del negocio, el contexto técnico y los atributos de calidad requeridos.",
+      tags:["APIs REST","Web Apps","Apps de escritorio","Microservicios","Serverless","Low-Code","Automatizaciones","CI/CD Pipelines"]
+    },
+    {
+      icon:"bi-puzzle", cat:"Diseño", featured:true,
+      title:"Patrones de diseño",
+      tags:["Singleton","Factory","Observer","Strategy","Decorator","Repository","Adapter"]
+    },
+    {
+      icon:"bi-puzzle", cat:"Diseño", featured:false,
+      title:"Patrones de Microservicios",
+      tags:["SAGA","CQRS","Circuit breaker"]
+    },
+    {
+      icon:"bi-layers", cat:"Principios", featured:false,
+      title:"Principios",
+      tags:["SOLID", "ACID","DRY","KISS"]
+    },
+    {
+      icon:"bi-shield-lock", cat:"Seguridad", featured:false,
+      title:"Seguridad & autenticación",
+      desc:"Implementación de mecanismos seguros de autenticación y autorización en sistemas distribuidos.",
+      tags:["OAuth2","OIDC","JWT","Keycloak","Spring Security"]
+    },
+    {
+      icon:"bi-check2-circle", cat:"Calidad", featured:false,
+      title:"Testing & calidad",
+      desc:"Estrategias de prueba para garantizar confiabilidad y detectar regresiones tempranas.",
+      tags:["TDD","JUnit","Mockito","xUnit","SonarQube"]
+    },
+    {
+      icon:"bi-kanban", cat:"Metodologías", featured:false,
+      title:"Metodologías ágiles",
+      desc:"Trabajo en equipos multidisciplinarios bajo frameworks de entrega iterativa e incremental.",
+      tags:["Scrum","Kanban","Sprint Planning","Retrospectivas"]
     },
   ]
 };
@@ -1057,13 +1057,20 @@ DATA.education.forEach((ed,ei)=>{
   eg.appendChild(d);
 });
 
-// Theory
-const tg=document.getElementById('theoryGrid');
-DATA.theory.forEach((th,ti)=>{
+// Knowledge bento
+const kg=document.getElementById('knowGrid');
+DATA.knowledge.forEach((k,ki)=>{
   const d=document.createElement('div');
-  d.className='theory-card reveal'; d.style.transitionDelay=ti*.1+'s';
-  d.innerHTML=`<i class="bi ${th.icon} theory-icon"></i><h4 class="theory-name">${th.name}</h4><p class="theory-desc">${th.desc}</p><div class="theory-badges">${th.badges.map(b=>`<span class="tbadge">${b}</span>`).join('')}</div>`;
-  tg.appendChild(d);
+  d.className='know-kcard reveal'+(k.featured?' featured':'');
+  d.style.transitionDelay=ki*.07+'s';
+  d.innerHTML=`
+    <div class="know-khead">
+      <i class="bi ${k.icon} know-kicon"></i>
+    </div>
+    <h3 class="know-ktitle">${k.title}</h3>
+    <div class="know-tags">${k.tags.map(t=>`<span class="know-tag">${t}</span>`).join('')}</div>
+    <div class="know-deco"></div>`;
+  kg.appendChild(d);
 });
 
 // IntersectionObserver
@@ -1088,7 +1095,7 @@ const cur=document.getElementById('cur'), ring=document.getElementById('cur-r');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
 (function raf(){ rx+=(mx-rx)*.1; ry+=(my-ry)*.1; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(raf); })();
-document.querySelectorAll('a,button,.proj-card,.stat-box,.theory-card,.diag-item').forEach(el=>{
+document.querySelectorAll('a,button,.proj-card,.stat-box,.know-kcard').forEach(el=>{
   el.addEventListener('mouseenter',()=>{ cur.style.width='14px'; cur.style.height='14px'; ring.style.width='52px'; ring.style.height='52px'; });
   el.addEventListener('mouseleave',()=>{ cur.style.width='9px'; cur.style.height='9px'; ring.style.width='38px'; ring.style.height='38px'; });
 });
