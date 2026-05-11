@@ -441,10 +441,15 @@ body {
 }
 .know-kicon {
   font-size: 1.55rem; color: var(--p400); line-height: 1;
-  transition: transform .3s, color .3s;
+  display: inline-block;
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1), color .3s, filter .3s;
 }
 .know-kcard.featured .know-kicon { font-size: 1.9rem; }
-.know-kcard:hover .know-kicon { transform: scale(1.15) rotate(-5deg); color: var(--p300); }
+.know-kcard:hover .know-kicon {
+  transform: scale(1.45) rotate(-10deg);
+  color: var(--p200);
+  filter: drop-shadow(0 0 10px rgba(139,61,255,.7));
+}
 
 .know-cat {
   font-family: var(--font-mono); font-size: .58rem; letter-spacing: 2px; text-transform: uppercase;
@@ -469,24 +474,38 @@ body {
   background: rgba(139,61,255,.1);
   color: var(--p200);
   border: 1px solid rgba(107,92,255,.28);
-  transition: background .2s, border-color .2s, color .2s, box-shadow .2s;
+  display: inline-block;
+  transition: background .22s, border-color .22s, color .22s, box-shadow .22s,
+              transform .35s cubic-bezier(.34,1.56,.64,1);
 }
 .know-kcard.featured .know-tag { font-size: .76rem; padding: .42rem 1rem; }
 
-/* brillo escalonado por tag */
+/* zoom + float escalonado al hover de la tarjeta */
 .know-kcard:hover .know-tag {
   background: rgba(139,61,255,.22);
   border-color: var(--p400);
   color: var(--p100);
   box-shadow: 0 0 10px rgba(107,92,255,.2);
+  transform: scale(1.08) translateY(-2px);
 }
-.know-kcard:hover .know-tag:nth-child(1) { transition-delay:.02s }
-.know-kcard:hover .know-tag:nth-child(2) { transition-delay:.05s }
-.know-kcard:hover .know-tag:nth-child(3) { transition-delay:.08s }
-.know-kcard:hover .know-tag:nth-child(4) { transition-delay:.11s }
-.know-kcard:hover .know-tag:nth-child(5) { transition-delay:.14s }
-.know-kcard:hover .know-tag:nth-child(6) { transition-delay:.17s }
-.know-kcard:hover .know-tag:nth-child(7) { transition-delay:.20s }
+.know-kcard:hover .know-tag:nth-child(1) { transition-delay:.03s }
+.know-kcard:hover .know-tag:nth-child(2) { transition-delay:.07s }
+.know-kcard:hover .know-tag:nth-child(3) { transition-delay:.11s }
+.know-kcard:hover .know-tag:nth-child(4) { transition-delay:.15s }
+.know-kcard:hover .know-tag:nth-child(5) { transition-delay:.19s }
+.know-kcard:hover .know-tag:nth-child(6) { transition-delay:.23s }
+.know-kcard:hover .know-tag:nth-child(7) { transition-delay:.27s }
+.know-kcard:hover .know-tag:nth-child(8) { transition-delay:.31s }
+
+/* hover directo sobre un tag: pop más fuerte */
+.know-tag:hover {
+  transform: scale(1.18) translateY(-4px) !important;
+  background: rgba(139,61,255,.35) !important;
+  border-color: var(--p300) !important;
+  box-shadow: 0 0 18px rgba(107,92,255,.45), 0 4px 12px rgba(0,0,0,.3) !important;
+  color: #fff !important;
+  transition-delay: 0s !important;
+}
 
 /* descripción: secundaria, se refuerza en hover */
 .know-kdesc {
