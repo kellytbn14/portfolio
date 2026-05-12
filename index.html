@@ -468,15 +468,13 @@ const sg=document.getElementById('stackGrid');
 DATA.stack.forEach((cat,ci)=>{
   const d=document.createElement('div');
   d.className='stack-card reveal'; d.style.transitionDelay=ci*.1+'s';
-  d.innerHTML=`<div class="stack-cat"><i class="bi ${cat.icon}"></i>${cat.cat}</div>`+
-    cat.techs.map(t=>`
-      <div class="tech-item">
-        <div class="tech-left">
-          <span class="tech-icon">${t.icon}</span>
-          <span class="tech-name">${t.name}</span>
-        </div>
-        <div class="tech-track"><div class="tech-fill" data-lv="${t.level}"></div></div>
-      </div>`).join('');
+  const pills=cat.techs.map(t=>{
+    const rot=(Math.random()*8-4).toFixed(1);
+    const dur=(2.4+Math.random()*2).toFixed(2);
+    const delay=(Math.random()*2.5).toFixed(2);
+    return `<span class="tech-pill" style="--rot:${rot}deg;--dur:${dur}s;--delay:${delay}s;">${t.icon?`<span class="tech-pill-icon">${t.icon}</span>`:''}<span>${t.name}</span></span>`;
+  }).join('');
+  d.innerHTML=`<div class="stack-cat"><i class="bi ${cat.icon}"></i>${cat.cat}</div><div class="tech-cloud">${pills}</div>`;
   sg.appendChild(d);
 });
 
