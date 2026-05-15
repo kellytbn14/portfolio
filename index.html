@@ -600,14 +600,52 @@ document.getElementById('burger').addEventListener('click',()=>{
 document.querySelectorAll('.nav-menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navMenu').classList.remove('open')));
 
 // ntfy.sh — notificación de visita
-fetch('https://ntfy.sh/cf1a8b9e-51a8-493d-9582-dea40e36077e', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    topic: 'cf1a8b9e-51a8-493d-9582-dea40e36077e',
-    title: '👀 Alguien visitó tu portfolio',
-    message: `🕐 ${new Date().toLocaleString('es-CO')}  |  🌍 ${navigator.language}  |  📱 ${/Mobi/.test(navigator.userAgent) ? 'Móvil' : 'Escritorio'}`
-  })
+const _ntfyTopic = 'cf1a8b9e-51a8-493d-9582-dea40e36077e';
+const _ntfyUrl   = 'https://ntfy.sh/' + _ntfyTopic;
+const _visitStart = Date.now();
+
+(function() {
+  const tz       = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const lang     = navigator.language;
+  const device   = /Mobi|Android/i.test(navigator.userAgent) ? 'Móvil' : 'Escritorio';
+  const fecha    = new Date().toLocaleString('es-CO', { timeZone: tz });
+
+  const ref = document.referrer;
+  let fuente = 'Enlace Directo';
+  if (ref) {
+    try {
+      const h = new URL(ref).hostname;
+      if (/google/.test(h))   fuente = 'Google';
+      else if (/linkedin/.test(h)) fuente = 'LinkedIn';
+      else if (/github/.test(h))   fuente = 'GitHub';
+      else if (/twitter|x\.com/.test(h)) fuente = 'Twitter/X';
+      else fuente = '🌐 ' + h;
+    } catch(_) { fuente = '🌐 ' + ref.slice(0, 40); }
+  }
+
+  fetch(_ntfyUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      topic: _ntfyTopic,
+      title: 'Alguien visitó tu portfolio',
+      message: [
+        `fecha: ${fecha} | lenguage: ${lang} | dispositivo: ${device} | timezone: ${tz} | fuente: ${fuente}`,
+      ].join('\n')
+    })
+  });
+})();
+
+window.addEventListener('beforeunload', function() {
+  const secs  = Math.round((Date.now() - _visitStart) / 1000);
+  const mins  = Math.floor(secs / 60);
+  const resto = secs % 60;
+  const duracion = mins > 0 ? `${mins}m ${resto}s` : `${secs}s`;
+  navigator.sendBeacon(_ntfyUrl, JSON.stringify({
+    topic: _ntfyTopic,
+    title: 'Salió del portfolio',
+    message: `Tiempo en página: ${duracion}`
+  }));
 });
 
 // Form
